@@ -13,10 +13,11 @@
   -webkit-user-drag: none;
   -webkit-touch-callout: none;
   -ms-content-zooming: none;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   padding: 0;
@@ -28,7 +29,10 @@ html, body {
   color: #fff;
 }
 
-a, a:hover, a:active, a:visited {
+a,
+a:hover,
+a:active,
+a:visited {
   text-decoration: none;
   color: inherit;
 }
@@ -65,11 +69,6 @@ body.fullscreen-enabled.mobile #titleBar {
   right: 100px;
 }
 
-/* If there are multiple scenes the title bar must make space for the scene list toggle */
-body.multiple-scenes #titleBar {
-  left: 40px;
-}
-
 body.multiple-scenes.mobile #titleBar {
   left: 50px;
 }
@@ -79,8 +78,8 @@ body.multiple-scenes.mobile #titleBar {
   height: 100%;
   line-height: 30px;
   padding: 5px;
-  background-color: rgb(58,68,84);
-  background-color: rgba(58,68,84,0.8);
+  background-color: rgba(197, 165, 78, 0);
+  background-color: rgba(58, 68, 84, 0.096);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -103,8 +102,8 @@ body.multiple-scenes.mobile #titleBar {
   width: 40px;
   height: 40px;
   padding: 5px;
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
+  background-color:rgba(197, 165, 78, 0);
+  background-color: rgba(58, 68, 84, 0.096);
 }
 
 .mobile #fullscreenToggle {
@@ -153,8 +152,8 @@ body.fullscreen-enabled #fullscreenToggle {
   width: 40px;
   height: 40px;
   padding: 5px;
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
+  background-color:rgba(197, 165, 78, 0);
+  background-color: rgba(58, 68, 84, 0.096);
 }
 
 .mobile #autorotateToggle {
@@ -200,112 +199,35 @@ body.fullscreen-enabled.mobile #autorotateToggle {
   display: none;
 }
 
-#sceneListToggle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
-  padding: 5px;
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
-}
-
-.mobile #sceneListToggle {
-  width: 50px;
-  height: 50px;
-}
-
-#sceneListToggle .text {
-  position: absolute;
-  top: 5px;
-  left: 15px;
+.scenes {
   width: 100%;
-  line-height: 30px;
+  background-color: rgb(58, 68, 84);
+  background-color: rgba(58, 68, 84, 0.8);
 }
 
-#sceneListToggle .icon {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 30px;
-  height: 30px;
-}
-
-.mobile #sceneListToggle .icon {
-  top: 10px;
-  right: 10px;
-}
-
-#sceneListToggle .icon.on {
-  display: none;
-}
-
-#sceneListToggle .icon.off {
-  display: block;
-}
-
-#sceneListToggle.enabled .icon.on {
-  display: block;
-}
-
-#sceneListToggle.enabled .icon.off {
-  display: none;
-}
-
-#sceneList {
-  position: absolute;
-  top: 0;
-  left: -220px;
-  padding-top: 40px;
-  width: 220px;
-  max-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin-left: 0;
-  -webkit-transition: margin-left 0.5s ease-in-out;
-  transition: margin-left 0.5s ease-in-out;
-}
-
-.mobile #sceneList {
-  padding-top: 50px;
-}
-
-#sceneList .scenes {
-  width: 100%;
-  background-color: rgb(58,68,84);
-  background-color: rgba(58,68,84,0.8);
-}
-
-.mobile #sceneList {
-  width: 100%;
-  height: 100%;
-  left: -100%;
-}
-
-.mobile #sceneList.enabled {
+.enabled {
   margin-left: 100%;
 }
 
-.mobile #sceneList .scenes {
+.scenes {
   height: 100%;
 }
 
-#sceneList.enabled {
+.enabled {
   margin-left: 220px;
 }
 
-#sceneList .scene {
+.scene {
   display: block;
   width: 100%;
   height: 30px;
 }
 
-.mobile #sceneList .scene {
+.mobile .scene {
   height: 40px;
 }
 
-#sceneList .scene .text {
+.scene .text {
   width: 100%;
   height: 100%;
   padding: 0 15px;
@@ -315,22 +237,23 @@ body.fullscreen-enabled.mobile #autorotateToggle {
   white-space: nowrap;
 }
 
-.mobile #sceneList .scene .text {
+.mobile .scene .text {
   line-height: 40px;
 }
 
-.no-touch #sceneList .scene:hover {
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
+.no-touch .scene:hover {
+  background-color:rgba(197, 165, 78, 0);
+  background-color: rgba(58, 68, 84, 0.096);
 }
 
-#sceneList .scene.current {
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
+.scene.current {
+  background-color:rgba(197, 165, 78, 0);
+  background-color: rgba(58, 68, 84, 0.096);
 }
 
 /* Hide scene list when only a single scene exists */
-body.single-scene #sceneList, body.single-scene #sceneListToggle {
+body.single-scene,
+body.single-scene {
   display: none;
 }
 
@@ -364,7 +287,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 .link-hotspot-tooltip {
   position: absolute;
   left: 100%;
-  top: 14px; /* ( 60 - (16 + 2*8) ) / 2 */
+  top: 14px;
+  /* ( 60 - (16 + 2*8) ) / 2 */
 
   margin-left: 3px;
 
@@ -376,8 +300,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 
   border-radius: 5px;
 
-  background-color: rgb(58,68,84);
-  background-color: rgba(58,68,84,0.8);
+  background-color: rgb(58, 68, 84);
+  background-color: rgba(58, 68, 84, 0.8);
 
   color: #fff;
 
@@ -394,17 +318,18 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   transform: translateX(-8px);
 
   -webkit-transition: -ms-transform 0.3s,
-                      -webkit-transform 0.3s,
-                      transform 0.3s,
-                      opacity 0.3s;
+    -webkit-transform 0.3s,
+    transform 0.3s,
+    opacity 0.3s;
   transition: -ms-transform 0.3s,
-              -webkit-transform 0.3s,
-              transform 0.3s,
-              opacity 0.3s;
+    -webkit-transform 0.3s,
+    transform 0.3s,
+    opacity 0.3s;
 }
 
 .mobile .link-hotspot {
-  top: 19px; /* ( 70 - (16 + 2*8) ) / 2 */
+  top: 19px;
+  /* ( 70 - (16 + 2*8) ) / 2 */
 }
 
 .no-touch .link-hotspot:hover .link-hotspot-tooltip {
@@ -418,6 +343,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 .link-hotspot-tooltip {
   pointer-events: none;
 }
+
 .no-touch .link-hotspot:hover .link-hotspot-tooltip {
   pointer-events: all;
 }
@@ -426,6 +352,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 .tooltip-fallback .link-hotspot-tooltip {
   display: none;
 }
+
 .no-touch .tooltip-fallback .link-hotspot:hover .link-hotspot-tooltip {
   display: block;
 }
@@ -453,12 +380,12 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  background-color: rgb(103,115,131);
+  background-color:rgba(197, 165, 78, 0);
   cursor: pointer;
   -webkit-transition: width 0.3s ease-in-out 0.5s,
-                      border-radius 0.3s ease-in-out 0.5s;
+    border-radius 0.3s ease-in-out 0.5s;
   transition: width 0.3s ease-in-out 0.5s,
-              border-radius 0.3s ease-in-out 0.5s;
+    border-radius 0.3s ease-in-out 0.5s;
 }
 
 .mobile .info-hotspot .info-hotspot-header {
@@ -471,9 +398,9 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   width: 260px;
   border-radius: 5px;
   -webkit-transition: width 0.3s ease-in-out,
-                      border-radius 0.3s ease-in-out;
+    border-radius 0.3s ease-in-out;
   transition: width 0.3s ease-in-out,
-              border-radius 0.3s ease-in-out;
+    border-radius 0.3s ease-in-out;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-header,
@@ -484,9 +411,9 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   -webkit-transition: width 0.3s ease-in-out,
-                      border-radius 0.3s ease-in-out;
+    border-radius 0.3s ease-in-out;
   transition: width 0.3s ease-in-out,
-              border-radius 0.3s ease-in-out;
+    border-radius 0.3s ease-in-out;
 }
 
 .info-hotspot .info-hotspot-icon-wrapper {
@@ -514,9 +441,9 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   padding: 0;
   overflow: hidden;
   -webkit-transition: width 0s 0.4s,
-                      padding 0s 0.4s;
+    padding 0s 0.4s;
   transition: width 0s 0.4s,
-              padding 0s 0.4s;
+    padding 0s 0.4s;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-title-wrapper,
@@ -524,9 +451,9 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   width: 220px;
   padding: 0 5px;
   -webkit-transition: width 0s 0.4s,
-                      padding 0s 0.4s;
+    padding 0s 0.4s;
   transition: width 0s 0.4s,
-              padding 0s 0.4s;
+    padding 0s 0.4s;
 }
 
 .info-hotspot .info-hotspot-title-wrapper:before {
@@ -553,7 +480,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   height: 40px;
   width: 40px;
   border-top-right-radius: 5px;
-  background-color: rgb(78,88,104);
+  background-color: rgb(78, 88, 104);
   visibility: hidden;
   -ms-transform: perspective(200px) rotateY(90deg);
   -webkit-transform: perspective(200px) rotateY(90deg);
@@ -562,13 +489,13 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   -webkit-transform-origin: 0 50% 0;
   transform-origin: 0 50% 0;
   -webkit-transition: -ms-transform 0.3s 0.3s,
-                      -webkit-transform 0.3s 0.3s,
-                      transform 0.3s 0.3s,
-                      visibility 0s 0.6s;
+    -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s,
+    visibility 0s 0.6s;
   transition: -ms-transform 0.3s 0.3s,
-              -webkit-transform 0.3s 0.3s,
-              transform 0.3s 0.3s,
-              visibility 0s 0.6s;
+    -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s,
+    visibility 0s 0.6s;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-close-wrapper {
@@ -577,13 +504,13 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   -webkit-transform: perspective(200px) rotateY(0deg);
   transform: perspective(200px) rotateY(0deg);
   -webkit-transition: -ms-transform 0.3s,
-                      -webkit-transform 0.3s,
-                      transform 0.3s,
-                      visibility 0s 0s;
+    -webkit-transform 0.3s,
+    transform 0.3s,
+    visibility 0s 0s;
   transition: -ms-transform 0.3s,
-              -webkit-transform 0.3s,
-              transform 0.3s,
-              visibility 0s 0s;
+    -webkit-transform 0.3s,
+    transform 0.3s,
+    visibility 0s 0s;
 }
 
 .info-hotspot .info-hotspot-close-icon {
@@ -600,7 +527,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   top: 40px;
   left: 0;
   padding: 10px;
-  background-color: rgb(58,68,84);
+  background-color: rgb(58, 68, 84);
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   overflow-y: auto;
@@ -613,13 +540,13 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   -webkit-transform-origin: 50% 0 0;
   transform-origin: 50% 0 0;
   -webkit-transition: -ms-transform 0.3s,
-                      -webkit-transform 0.3s,
-                      transform 0.3s,
-                      visibility 0s 0.3s;
+    -webkit-transform 0.3s,
+    transform 0.3s,
+    visibility 0s 0.3s;
   transition: -ms-transform 0.3s,
-              -webkit-transform 0.3s,
-              transform 0.3s,
-              visibility 0s 0.3s;
+    -webkit-transform 0.3s,
+    transform 0.3s,
+    visibility 0s 0.3s;
 
   -moz-user-select: text;
   -webkit-user-select: text;
@@ -633,13 +560,13 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   -webkit-transform: perspective(200px) rotateX(0deg);
   transform: perspective(200px) rotateX(0deg);
   -webkit-transition: -ms-transform 0.3s 0.3s,
-                      -webkit-transform 0.3s 0.3s,
-                      transform 0.3s 0.3s,
-                      visibility 0s 0s;
+    -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s,
+    visibility 0s 0s;
   transition: -ms-transform 0.3s 0.3s,
-              -webkit-transform 0.3s 0.3s,
-              transform 0.3s 0.3s,
-              visibility 0s 0s;
+    -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s,
+    visibility 0s 0s;
 }
 
 /* Info hotspot modal */
@@ -656,23 +583,23 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   height: 100%;
   overflow: hidden;
   z-index: 11000 !important;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, .5);
   line-height: 1.2em;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: opacity 0.2s ease-in-out 0.5s,
-                      visibility 0s 0.7s;
+    visibility 0s 0.7s;
   transition: opacity 0.2s ease-in-out 0.5s,
-              visibility 0s 0.7s;
+    visibility 0s 0.7s;
 }
 
 .info-hotspot-modal.visible {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.2s ease-in-out,
-                      visibility 0s 0s;
+    visibility 0s 0s;
   transition: opacity 0.2s ease-in-out,
-              visibility 0s 0s;
+    visibility 0s 0s;
 }
 
 .info-hotspot-modal .info-hotspot-header {
@@ -682,8 +609,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   right: 10px;
   width: auto;
   height: 50px;
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
+  background-color:rgba(197, 165, 78, 0);
+  background-color: rgba(58, 68, 84, 0.096);
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out 0.2s;
   transition: opacity 0.3s ease-in-out 0.2s;
@@ -739,8 +666,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   right: 0;
   width: 50px;
   height: 50px;
-  background-color: rgb(78,88,104);
-  background-color: rgba(78,88,104,0.8);
+  background-color: rgb(78, 88, 104);
+  background-color: rgba(78, 88, 104, 0.8);
   cursor: pointer;
 }
 
@@ -757,8 +684,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   left: 10px;
   right: 10px;
   padding: 10px;
-  background-color: rgb(58,68,84);
-  background-color: rgba(58,68,84,0.8);
+  background-color: rgb(58, 68, 84);
+  background-color: rgba(58, 68, 84, 0.8);
   overflow-y: auto;
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out;
@@ -786,8 +713,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   width: 40px;
   height: 40px;
   padding: 5px;
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
+  background-color:rgba(197, 165, 78, 0);
+  background-color: rgba(58, 68, 84, 0.096);
 }
 
 body.view-control-buttons .viewControlButton {
@@ -813,18 +740,23 @@ body.view-control-buttons .viewControlButton {
 .viewControlButton-1 {
   margin-left: -145px;
 }
+
 .viewControlButton-2 {
   margin-left: -95px;
 }
+
 .viewControlButton-3 {
   margin-left: -45px;
 }
+
 .viewControlButton-4 {
   margin-left: 5px;
 }
+
 .viewControlButton-5 {
   margin-left: 55px;
 }
+
 .viewControlButton-6 {
   margin-left: 105px;
 }

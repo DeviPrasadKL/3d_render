@@ -24,9 +24,6 @@
   // Grab elements from DOM.
   var panoElement = document.querySelector('#pano');
   var sceneNameElement = document.querySelector('#titleBar .sceneName');
-  var sceneListElement = document.querySelector('#sceneList');
-  var sceneElements = document.querySelectorAll('#sceneList .scene');
-  var sceneListToggleElement = document.querySelector('#sceneListToggle');
   var autorotateToggleElement = document.querySelector('#autorotateToggle');
   var fullscreenToggleElement = document.querySelector('#fullscreenToggle');
 
@@ -137,25 +134,21 @@
     document.body.classList.add('fullscreen-disabled');
   }
 
-  // Set handler for scene list toggle.
-  sceneListToggleElement.addEventListener('click', toggleSceneList);
-
-  // Start with the scene list open on desktop.
-  if (!document.body.classList.contains('mobile')) {
-    showSceneList();
-  }
-
   // Set handler for scene switch.
-  scenes.forEach(function(scene) {
-    var el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
-    el.addEventListener('click', function() {
-      switchScene(scene);
-      // On mobile, hide scene list after selecting a scene.
-      if (document.body.classList.contains('mobile')) {
-        hideSceneList();
+  if (scenes.length > 0) {
+    scenes.forEach(function(scene) {
+      var el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
+      if (el) {
+        el.addEventListener('click', function() {
+          switchScene(scene);
+          // On mobile, hide scene list after selecting a scene.
+          if (document.body.classList.contains('mobile')) {
+            hideSceneList();
+          }
+        });
       }
     });
-  });
+  }
 
   // DOM elements for view controls.
   var viewUpElement = document.querySelector('#viewUp');
@@ -188,37 +181,10 @@
     scene.scene.switchTo();
     startAutorotate();
     updateSceneName(scene);
-    updateSceneList(scene);
   }
 
   function updateSceneName(scene) {
     sceneNameElement.innerHTML = sanitize(scene.data.name);
-  }
-
-  function updateSceneList(scene) {
-    for (var i = 0; i < sceneElements.length; i++) {
-      var el = sceneElements[i];
-      if (el.getAttribute('data-id') === scene.data.id) {
-        el.classList.add('current');
-      } else {
-        el.classList.remove('current');
-      }
-    }
-  }
-
-  function showSceneList() {
-    sceneListElement.classList.add('enabled');
-    sceneListToggleElement.classList.add('enabled');
-  }
-
-  function hideSceneList() {
-    sceneListElement.classList.remove('enabled');
-    sceneListToggleElement.classList.remove('enabled');
-  }
-
-  function toggleSceneList() {
-    sceneListElement.classList.toggle('enabled');
-    sceneListToggleElement.classList.toggle('enabled');
   }
 
   function startAutorotate() {
@@ -245,7 +211,6 @@
   }
 
   function createLinkHotspotElement(hotspot) {
-
     // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
@@ -255,17 +220,26 @@
     var icon = document.createElement('img');
     icon.src = 'img/link.png';
     icon.classList.add('link-hotspot-icon');
+    icon.style.opacity = '0.4'; // Set initial opacity for inactive state
 
     // Set rotation transform.
     var transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
     for (var i = 0; i < transformProperties.length; i++) {
-      var property = transformProperties[i];
-      icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
+        var property = transformProperties[i];
+        icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
     }
+
+    // Add mouse enter and leave event handlers to change opacity
+    wrapper.addEventListener('mouseenter', function() {
+        icon.style.opacity = '1'; // Increase opacity when mouse is active
+    });
+    wrapper.addEventListener('mouseleave', function() {
+        icon.style.opacity = '0.5'; // Decrease opacity when mouse is inactive
+    });
 
     // Add click event handler.
     wrapper.addEventListener('click', function() {
-      switchScene(findSceneById(hotspot.target));
+        switchScene(findSceneById(hotspot.target));
     });
 
     // Prevent touch and scroll events from reaching the parent element.
